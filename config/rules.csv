@@ -1,0 +1,2 @@
+rule,columns,level,list
+Float,decimalLatitude|decimalLongitude,error,
