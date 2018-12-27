@@ -6,6 +6,7 @@
 # import os
 import multiprocessing
 
+import os
 import uuid
 import pandas as pd
 from preprocessor import AbstractPreProcessor
@@ -32,20 +33,12 @@ class PreProcessor(AbstractPreProcessor):
     def _process_data(self):
         num_processes = multiprocessing.cpu_count()
         chunk_size = 10000
-        data = pd.read_csv(self.input_dir, sep=',', header=0,
-                usecols=['haslength', 'hasmass', 'lengthinmm', 'lengthtype',
-                    'lengthunitsinferred', 'massing', 'massunitsinferred',
-                    'decimallatitude', 'decimallongitude','eventdate', 'genus',
-                    'occurrenceid', 'specificepithet', 'year'],
-                chunksize=chunk_size * num_processes)
+        data = pd.read_csv(os.path.join(self.input_dir,'vertnet_input.csv'), sep=',', header=0,
+                usecols=['recordid','occurrenceid','genus','specificepithet','eventdate',
+                'year','decimallatitude','decimallongitude','lengthtype','lengthinmm'],
+                engine='python')
 
-        for chunk in data:
-            chunks = [chunk.ix[chunk.index[i:i + chunk_size]] for i in range(0, chunk.shape[0], chunk_size)]
-            with multiprocessing.Pool(processes=num_processes) as pool:
-                pool.map(self._transform_chunk, chunks)
-
-    def _transform_chunk(self, chunk):
-        self._transform_data(chunk).to_csv(self.output_file, columns=self.headers, mode='a', header=False, index=False)
+        self._transform_data(data).to_csv(self.output_file, columns=self.headers, mode='a', header=False, index=False)
 
     def _transform_data(self, data):
         data['record_id'] = data.apply(lambda x: uuid.uuid4(), axis=1)
