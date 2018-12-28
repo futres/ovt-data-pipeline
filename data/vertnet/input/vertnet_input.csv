@@ -1,2 +1,2 @@
-recordid,occurrenceid,genus,specificepithet,eventdate,year,decimallatitude,decimallongitude,lengthtype,lengthinmm
-26,http://arctos.database.museum/guid/MVZ:Herp:245699?seid=1329744,Sceloporus,occidentalis,2004-06-24,2004.0,37.84105,-119.49166000000001,snout-vent length,84.6
+organismID,scientificName,taxonRank,anatomicalFeature,measurementValue,measurementUnit,measurementMethod,yearMeasured,monthMeasured,dayMeasured,decimalLatitude,decimalLongitude,beginDateCertainty,methodOfDateDerivation
+http://arctos.database.museum/guid/MVZ:Herp:245699?seid=1329744,Sceloporus occidentalis,specificEpithet,snout-vent,84.6,mm,Unknown,2004,06,24,37.84105,-119.49166,2004-06-24,Unknown
