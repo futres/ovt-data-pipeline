@@ -4,7 +4,7 @@
 
 # import logging
 # import os
-import multiprocessing
+#import multiprocessing
 
 import os
 import uuid
@@ -13,8 +13,8 @@ from preprocessor import AbstractPreProcessor
 
 class PreProcessor(AbstractPreProcessor):
     def _process_data(self):
-        num_processes = multiprocessing.cpu_count()
-        chunk_size = 10000
+        #num_processes = multiprocessing.cpu_count()
+        #chunk_size = 10000
         data = pd.read_csv(os.path.join(self.input_dir,'vertnet_input.csv'), sep=',', header=0,
                 #usecols=['recordid','occurrenceid','genus','specificepithet','eventdate',
                 #'year','decimallatitude','decimallongitude','lengthtype','lengthinmm'],
@@ -27,6 +27,12 @@ class PreProcessor(AbstractPreProcessor):
         # observations or elements so these are just UUIDs in both cases.
         data['observationID'] = data.apply(lambda x: uuid.uuid4(), axis=1)
         data['elementID'] = data.apply(lambda x: uuid.uuid4(), axis=1)
+        # fill in missing field names from headers.csv  -- we need to have all column names mapped in output
+        data['imageURI'] = ''
+        data['minimumChronometricAge'] = ''
+        data['maximumChronometricAge'] = ''
+        data['endDateCertainty']  = ''
+        data['associatedSequences'] = ''
 
         return data
 

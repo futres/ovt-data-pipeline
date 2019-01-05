@@ -2,9 +2,9 @@ column,uri,entity_alias,notes
 observationID,http://rs.tdwg.org/dwc/terms/eventID,organismalTraitObsProcess,
 elementID,http://rs.tdwg.org/dwc/terms/measurementID,organismalTraitObsProcess,
 organismID,http://rs.tdwg.org/dwc/terms/organismID,vertebrateOrganism,We hope that each organism has a unique occurence ID
-beginDateCertainty,http://rs.tdwg.org/dwc/terms/eventDate,organismalTraitObsProcess,
-endDateCertainty,http://rs.tdwg.org/dwc/terms/eventDate,organismalTraitObsProcess,
-methodOfDateDerivation,http://rs.tdwg.org/dwc/terms/eventDate,organismalTraitObsProcess,
+beginDateCertainty,urn:beginDateCertainty,organismalTraitObsProcess,
+endDateCertainty,urn:endDateCertainty,organismalTraitObsProcess,
+methodOfDateDerivation,urn:methodOfDateDerivation,organismalTraitObsProcess,
 yearMeasured,http://rs.tdwg.org/dwc/terms/year,organismalTraitObsProcess,
 monthMeasured,http://rs.tdwg.org/dwc/terms/month,organismalTraitObsProcess,
 dayMeasured,http://rs.tdwg.org/dwc/terms/day,organismalTraitObsProcess,
