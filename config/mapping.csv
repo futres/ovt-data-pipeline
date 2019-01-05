@@ -15,3 +15,5 @@ taxonRank,http://rs.tdwg.org/dwc/terms/taxonRank,vertebrateOrganism,
 measurementValue,http://rs.tdwg.org/dwc/terms/measurementValue,scalarMeasurementDatum,
 measurementUnit,http://rs.tdwg.org/dwc/terms/measurementUnit,scalarMeasurementDatum,
 measurementMethod,http://rs.tdwg.org/dwc/terms/measurementMethod,scalarMeasurementDatum,
+anatomicalFeature,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,vertebrateScalarTrait,"Using rdf:type indicates the values will be object properties, in this case defined by a list association in rules.csv."
+anatomicalFeature,urn:anatomicalFeature,vertebrateScalarTrait,
