@@ -1,5 +1,5 @@
 alias,concept_uri,unique_key,identifier_root,notes
 vertebrateScalarTrait,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,observationID,urn:vertebrateScalarTrait/,rdf:type designation means we intend to pull type values 
-organismalTraitObsProcess,http://purl.obolibrary.org/obo/OVT_0000002,observationID,urn:organismalTraitObsProcess/,
+organismalTraitObsProcess,http://purl.obolibrary.org/obo/OVT_0001000,observationID,urn:organismalTraitObsProcess/,
 scalarMeasurementDatum,http://purl.obolibrary.org/obo/IAO_0000032,observationID,urn:scalarMeasurementDatum/,
-vertebrateOrganism,http://purl.obolibrary.org/obo/NCBITaxon_7742,observationID,urn:vertebateOrganism/,
+vertebrateOrganism,http://purl.obolibrary.org/obo/NCBITaxon_7742,observationID,urn:vertebrateOrganism/,
