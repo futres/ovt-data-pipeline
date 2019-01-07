@@ -1,3 +1,6 @@
 .python-version
 data/*
 **/__pycache__/*
+.cache/*
+output.txt
+output.txt.err

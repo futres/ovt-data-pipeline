@@ -10,7 +10,7 @@ prefix urn: <urn:>
 
 # Use the concat/group_concat function to push all plantStructurePresence types into an array within a field.
 # this enables ElasticSearch to index this easily while shrinking output file sizes
-SELECT  (?organismalTraitObsProcess as ?eventId) ?genus ?specificEpithet ?scientificName ?basisOfRecord (group_concat(distinct ?traitTypes;separator='|') as ?traits)
+SELECT ?observationID ?elementID ?beginDateCertainty ?endDateCertainty ?methodOfDateDerivation ?yearMeasured ?monthMeasured ?dayMeasured ?decimalLatitude ?decimalLongitude ?imageURI ?minimumChronometricAge ?maximumChronometricAge ?associatedSequences ?scientificName ?taxonRank ?organismID ?anatomicalFeature ?measurementValue ?measurementUnit ?measurementMethod (group_concat(distinct ?traitTypes;separator='|') as ?traits)
 
 WHERE {    
 
@@ -32,13 +32,37 @@ WHERE {
 	?organismalTraitObsProcess obo:OBI_0000299 ?scalarMeasurementDatum .
 	?vertebrateOrganism obo:OBI_0000295 ?organismalTraitObsProcess .
 
-	# Organism attributes
-        OPTIONAL {?vertebrateOrganism dwc:genus ?genus} . 
-        OPTIONAL {?vertebrateOrganism dwc:specificEpithet ?specificEpithet} . 
+	# Observing Process Attributes
+	OPTIONAL {?organismalTraitObsProcess dwc:eventID ?observationID} .
+	OPTIONAL {?organismalTraitObsProcess dwc:measurementID ?elementID} .
+	OPTIONAL {?organismalTraitObsProcess urn:beginDateCertainty ?beginDateCertainty} .
+	OPTIONAL {?organismalTraitObsProcess urn:endDateCertainty ?endDateCertainty} .
+	OPTIONAL {?organismalTraitObsProcess urn:methodOfDateDerivation ?methodOfDateDerivation} .
+	OPTIONAL {?organismalTraitObsProcess dwc:year ?yearMeasured} .
+	OPTIONAL {?organismalTraitObsProcess dwc:month ?monthMeasured} .
+	OPTIONAL {?organismalTraitObsProcess dwc:day ?dayMeasured} .
+	OPTIONAL {?organismalTraitObsProcess dwc:decimalLatitude ?decimalLatitude} .
+	OPTIONAL {?organismalTraitObsProcess dwc:decimalLongitude ?decimalLongitude} .
+	OPTIONAL {?organismalTraitObsProcess dwc:associatedMedia ?imageURI} .
+	OPTIONAL {?organismalTraitObsProcess urn:minimumChronometricAge ?minimumChronometricAge} .
+	OPTIONAL {?organismalTraitObsProcess urn:maximumChronometricAge ?maximumChronometricAge} .
+	OPTIONAL {?organismalTraitObsProcess dwc:associatedSequences ?associatedSequences} .  
+
+	# Organism Attributes
         OPTIONAL {?vertebrateOrganism dwc:scientificName ?scientificName} . 
-        OPTIONAL {?vertebrateOrganism dwc:basisOfRecord ?basisOfRecord} . 
-        OPTIONAL {?vertebrateOrganism dwc:individualID ?individualID} . 
+        OPTIONAL {?vertebrateOrganism dwc:taxonRank ?taxonRank} . 
+	OPTIONAL {?vertebrateOrganism dwc:organismID ?organismID} .
+
+	# Trait Attributes
+	OPTIONAL {?vertebrateScalarTrait urn:anatomicalFeature ?anatomicalFeature} .
+
+	# Scalar Measurement Datum
+	OPTIONAL {?scalarMeasurementDatum dwc:measurementValue ?measurementValue} .
+	OPTIONAL {?scalarMeasurementDatum dwc:measurementUnit ?measurementUnit} .
+	OPTIONAL {?scalarMeasurementDatum dwc:measurementMethod ?measurementMethod} .
 
 }
-GROUP BY ?organismalTraitObsProcess ?genus ?specificEpithet ?scientificName ?basisOfRecord 
-ORDER BY ASC(?organismalTraitObsProcess)
+
+GROUP BY ?observationID ?elementID ?beginDateCertainty ?endDateCertainty ?methodOfDateDerivation ?yearMeasured ?monthMeasured ?dayMeasured ?decimalLatitude ?decimalLongitude ?imageURI ?minimumChronometricAge ?maximumChronometricAge ?associatedSequences ?scientificName ?taxonRank ?organismID ?anatomicalFeature ?measurementValue ?measurementUnit ?measurementMethod 
+ORDER BY ASC(?observationID)
+
