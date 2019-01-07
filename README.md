@@ -6,13 +6,13 @@ This repository contains the configuration directives to run the
 
 To get started, follow the installation instructions at [ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline). 
 
-Once everything is installed, you should be able to simply run:  
+Once everything is installed, proceed to the root directory of the code you have checked out and you should be able to simply run:  
 
 ```  
 pytest 
 ```
 
-If the above fails then either you do not have pytest installed on your system or the installation did not proceed.  
+If the above fails you must stop and figure out what happened and fix it. 
 If you had success, then you can proceed with processing data, for example:
 
 ```  
