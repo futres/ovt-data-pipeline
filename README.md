@@ -12,7 +12,8 @@ Once everything is installed, you should be able to simply run:
 pytest 
 ```
 
-If the above fails then either you do not have pytest installed on your system or the installation did not proceed.  
+If the above fails then either you do not have pytest installed on your system or the installation did not proceed.  Install pytest with ```pip install pytest```
+
 If you had success, then you can proceed with processing data, for example:
 
 ```  
