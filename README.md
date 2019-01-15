@@ -13,9 +13,10 @@ pip install -r requirements.txt
 pytest 
 ```
 
-If the above fails you must stop and figure out what happened and fix it.  
-If you had success, then you can proceed with processing data, for example:
+If the above fails you must stop and figure out what happened and fix it. 
+If you had succcess you can look at the output in the in the following directory ```test_data/vertnet/output/output_reasoned_csv/```
 
+After the tests have been run, you can now process real data using the run.sh script, like:
 ```  
 ./run.sh vertnet
 ```
