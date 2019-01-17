@@ -10,7 +10,7 @@ Once everything is installed, proceed to the root directory of the code you have
 
 ```  
 pip install -r requirements.txt  
-pytest 
+python -m pytest 
 ```
 
 If the above fails you must stop and figure out what happened and fix it. 
