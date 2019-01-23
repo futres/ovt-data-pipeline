@@ -7,7 +7,7 @@ This repository contains the configuration directives to run the
 There are two ways to get started...
 
 # Docker Method:
-Install [docker](https://docs.docker.com/install/) and then clone this repository.  Once that is done, you can enter the following:
+[Install docker](https://docs.docker.com/install/) and then clone this repository.  Once that is done, you can enter the following:
 ```
 ./run_test_docker.sh vertnet
 ```
@@ -22,6 +22,7 @@ DEBUG:root:java -jar /app/process/../lib/query_fetcher-0.0.1.jar -i /process/tes
 INFO:root:b'    writing /process/test_data/vertnet/output/output_reasoned_csv/data_1.ttl.csv\n'
 INFO:root:reasoned_csv output at test_data/vertnet/output/output_reasoned_csv/data_1.ttl.csv
 ```
+You can find the docker image at [Docker Hub](https://cloud.docker.com/u/jdeck88/repository/docker/jdeck88/ontology-data-pipeline)
 
 # Non-docker Method:
 
