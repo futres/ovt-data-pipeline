@@ -7,8 +7,7 @@ This repository contains the configuration directives to run the
 There are two ways to get started...
 
 # Docker Method:
-Install [docker](https://docs.docker.com/install/)
-clone this repository and run:
+Install [docker](https://docs.docker.com/install/) and then clone this repository.  Once that is done, you can enter the following:
 ```
 ./run_test_docker.sh vertnet
 ```
