@@ -11,7 +11,7 @@ Install [docker](https://docs.docker.com/install/) and then clone this repositor
 ```
 ./run_test_docker.sh vertnet
 ```
-The above runs a small test project through the pipeline... you should output that ends with:
+The above runs a small test project through the pipeline... you should see output that ends with:
 ```
 ...
 INFO:root:reasoned output at test_data/vertnet/output/output_reasoned/data_1.ttl
