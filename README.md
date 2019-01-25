@@ -24,6 +24,11 @@ INFO:root:reasoned_csv output at test_data/vertnet/output/output_reasoned_csv/da
 ```
 You can find the docker image at [Docker Hub](https://cloud.docker.com/u/jdeck88/repository/docker/jdeck88/ontology-data-pipeline)
 
+Once you have verified things work using the test procedure above, you can then run data through the pipeline using:
+```
+./run_docker.sh vertnet
+```
+
 # Non-docker Method:
 
 Follow the installation instructions at [ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline). 
