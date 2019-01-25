@@ -17,4 +17,3 @@ python ../ontology-data-pipeline/process.py \
     https://raw.githubusercontent.com/futres/ovt/master/ontology/ovt-merged-reasoned.owl \
     config \
     projects \
-
