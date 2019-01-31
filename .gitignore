@@ -1,5 +1,5 @@
 .python-version
-data/vertnet/output/*
+**/output/*
 **/__pycache__/*
 .cache/*
 output.txt
