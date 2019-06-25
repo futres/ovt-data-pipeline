@@ -1,8 +1,8 @@
-# ovt-data-pipeline
+# fovt-data-pipeline
 
 This repository contains the configuration directives to run the 
 [ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline) for the
-[FuTRES project](https://futres.org/).
+[FuTRES project](https://futres.org/) using the FuTRES Ontology for Vertebrate Traits ([FOVT] (https://github.com/futres/fovt)).
 
 There are two ways to get started...
 
