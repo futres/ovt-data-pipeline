@@ -1,7 +1,7 @@
 require(reshape2)
 
 ## Ray's Data
-ray <- read.csv("1.FuTRESEquidDbase_6_24_2019.csv", stringsAsFactors = FALSE)
+ray <- read.csv("https://de.cyverse.org/dl/d/16030E74-A54F-44B2-AA03-76B1A49FCA49/1.FuTRESEquidDbase_6_24_2019.csv", stringsAsFactors = FALSE) #how to point to latest data version?
 boneAbbr <- read.csv("BoneAbbr.csv", stringsAsFactors = FALSE)
 
 #get rid of protected sites
@@ -102,7 +102,7 @@ ray_clean.1 <- ray_clean[,c(-3,-4,-10)]
 ray_clean.2 <- ray_clean.1[!(is.na(ray_clean.1$measurementValue)),]
 
 ##Kitty's data
-kitty <- read.csv("MayaDeerMetrics_Cantryll_Emeryedits.csv", skip = 2, stringsAsFactors = FALSE)
+kitty <- read.csv("https://de.cyverse.org/dl/d/0152B269-3942-4BC4-8FDC-E60B48B17EBD/MayaDeerMetrics_Cantryll_Emeryedits.csv", skip = 2, stringsAsFactors = FALSE)
 
 #measurements are: 16:101
 kitty_long <- melt(kitty, id.vars = 1:15)
