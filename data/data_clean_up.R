@@ -125,6 +125,9 @@ for(i in 1:length(kitty_clean$Period)){
   }
 }
 
+#add units
+kitty_clean$measurementUnit <- rep("mm", length(kitty_clean$value))
+
 #rename columns
 colnames(kitty_clean)[colnames(kitty_clean)=="Site"] <- "sitename"
 #colnames(kitty_clean)[colnames(kitty_clean)=="EAP.Acc."] <- ""
@@ -135,7 +138,7 @@ colnames(kitty_clean)[colnames(kitty_clean)=="Cantryll.Test...test..analyst.samp
 colnames(kitty_clean)[colnames(kitty_clean)=="Period"] <- "culturalStratigraphyOccupationPeriod"
 #colnames(kitty_clean)[colnames(kitty_clean)=="Date"] <- ""
 colnames(kitty_clean)[colnames(kitty_clean)=="ID"] <- "scientificName"
-#colnames(kitty_clean)[colnames(kitty_clean)=="Element"] <- "" #get rid of
+colnames(kitty_clean)[colnames(kitty_clean)=="Side"] <- "measurementSide"
 #colnames(kitty_clean)[colnames(kitty_clean)=="Description.completeness"] <- ""
 #colnames(kitty_clean)[colnames(kitty_clean)=="Age..modern.only."] <- ""
 #colnames(kitty_clean)[colnames(kitty_clean)=="Fusion"] <- ""
@@ -143,7 +146,31 @@ colnames(kitty_clean)[colnames(kitty_clean)=="ID"] <- "scientificName"
 colnames(kitty_clean)[colnames(kitty_clean)=="variable"] <- "measurementType"
 colnames(kitty_clean)[colnames(kitty_clean)=="value"] <- "measurementValue"
 
+kitty_clean.1 <- kitty_clean[,-10] #get rid of element type because redundant
 
+
+for(i in 1:length(kitty_clean.1$Date)) {
+  if(isTRUE(grepl("(?i)century", kitty_clean.1$Date[i]))) {
+    kitty_clean.1$referenceSystem[i] <- "century"
+  }
+  else if(isTRUE(grepl("??????AD?????", kitty_clean.1$Date[i]))) {
+    kitty_clean.1$referenceSystem[i] <- "AD"
+  }
+  else {
+    kitty_clean.1$referenceSystem[i] <- "NA"
+  }
+}
+
+kitty_clean.1$Date <- gsub("(?i)century|AD|th", "", kitty_clean.1$Date)
+kitty_clean.1$Date <- gsub(" to ", "-", kitty_clean.1$Date)
+
+#split dates
+separate(data = kitty_clean.1, col = kitty_clean.1$Date, into = c("minimumChronometricAge", "maximumChronometricAge"), sep = "\\-")
+
+kitty_clean.1$minimumChronometricAge <- sapply(strsplit(as.character(kitty_clean.1$Date),'-'), "[", 1)
+kitty_clean.1$maximumChronometricAge <- sapply(strsplit(as.character(kitty_clean.1$Date),'-'), "[", 2)
+
+kitty_clean.2 <- kitty_clean.1[,-8] #get rid of date
 
 
 ## VertNet data
