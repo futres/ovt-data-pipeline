@@ -78,6 +78,20 @@ for(i in 1:length(ray_long_sub$SPEC_ID)) {
   }
 }
 
+ray_clean <- ray_long_sub[!(is.na(ray_long_sub$value)),]
+
+colnames(ray_clean)[colnames(ray_clean)=="SPEC_ID"] <- "specimenID"
+colnames(ray_clean)[colnames(ray_clean)=="COUNTRY"] <- ""
+colnames(ray_clean)[colnames(ray_clean)=="LOCALITY"] <- "verbatimLocality"
+#colnames(ray_clean)[colnames(ray_clean)=="QUARRY"] <- ""
+colnames(ray_clean)[colnames(ray_clean)=="DATE.COLLECTED"] <- "verbatimEventDate"
+colnames(ray_clean)[colnames(ray_clean)=="SEX"] <- "sex"
+colnames(ray_clean)[colnames(ray_clean)=="AGE"] <- "ageValue"
+colnames(ray_clean)[colnames(ray_clean)=="variable"] <- "measurementType"
+colnames(ray_clean)[colnames(ray_clean)=="value"] <- "measurementValue"
+colnames(ray_clean)[colnames(ray_clean)=="SIDE"] <- "measurementSide"
+ray_clean$measurementUnit <- "mm"
+
 ##Kitty's data
 kitty <- read.csv("MayaDeerMetrics_Cantryll_Emeryedits.csv", skip = 2, stringsAsFactors = FALSE)
 
@@ -102,6 +116,76 @@ kitty_sub2$template[kitty_sub2$variable == "Humerus.GLC"] <- "Humerus length fro
 kitty_sub2$template[kitty_sub2$variable == "Humerus.GL"] <- "Humerus length"
 
 kitty_clean <- kitty_sub2[!(is.na(kitty_sub2$value)),]
+
+#move modern to a different group
+for(i in 1:length(kitty_clean$Period)){
+  if(isTRUE(kitty_clean$Period[i] == "M" | kitty_clean$Period[i] == "F" | kitty_clean$Date[i] == "1993")){
+    kitty_clean$Period[i] <- "NA"
+    kitty_clean$verbatimEventDate[i] <- kitty_clean$Date[i] 
+  }
+  else {
+    kitty_clean$verbatimEventDate[i] <- "NA"
+  }
+}
+
+for(i in 1:length(kitty_clean$Period)){
+  if(isTRUE(kitty_clean$Date[i] == kitty_clean$verbatimEventDate[i])){
+    kitty_clean$Date[i] <- "NA"
+  }
+  else {
+    next()
+  }
+}
+
+#add units
+kitty_clean$measurementUnit <- rep("mm", length(kitty_clean$value))
+
+#rename columns
+colnames(kitty_clean)[colnames(kitty_clean)=="Site"] <- "sitename"
+#colnames(kitty_clean)[colnames(kitty_clean)=="EAP.Acc."] <- ""
+colnames(kitty_clean)[colnames(kitty_clean)=="Provenience..field.number."] <- "contextName" #?
+colnames(kitty_clean)[colnames(kitty_clean)=="ID.Catalog...cat..element.or.portion."] <- "individualID"
+colnames(kitty_clean)[colnames(kitty_clean)=="Specimen.Catalog...cat..organism."] <- "catalogNumber"
+#colnames(kitty_clean)[colnames(kitty_clean)=="Cantryll.Test...test..analyst.sample.number."] <- ""
+colnames(kitty_clean)[colnames(kitty_clean)=="Period"] <- "culturalStratigraphyOccupationPeriod"
+#colnames(kitty_clean)[colnames(kitty_clean)=="Date"] <- ""
+colnames(kitty_clean)[colnames(kitty_clean)=="ID"] <- "scientificName"
+colnames(kitty_clean)[colnames(kitty_clean)=="Side"] <- "measurementSide"
+#colnames(kitty_clean)[colnames(kitty_clean)=="Description.completeness"] <- ""
+#colnames(kitty_clean)[colnames(kitty_clean)=="Age..modern.only."] <- ""
+#colnames(kitty_clean)[colnames(kitty_clean)=="Fusion"] <- ""
+#colnames(kitty_clean)[colnames(kitty_clean)=="Cantryll.notes"] <- ""
+colnames(kitty_clean)[colnames(kitty_clean)=="variable"] <- "measurementType"
+colnames(kitty_clean)[colnames(kitty_clean)=="value"] <- "measurementValue"
+
+kitty_clean.1 <- kitty_clean[,-10] #get rid of element type because redundant
+
+
+for(i in 1:length(kitty_clean.1$Date)) {
+  if(isTRUE(grepl("(?i)century", kitty_clean.1$Date[i]))) {
+    kitty_clean.1$referenceSystem[i] <- "century"
+  }
+  else if(isTRUE(grepl("??????AD?????", kitty_clean.1$Date[i]))) {
+    kitty_clean.1$referenceSystem[i] <- "AD"
+  }
+  else {
+    kitty_clean.1$referenceSystem[i] <- "NA"
+  }
+}
+
+kitty_clean.1$Date <- gsub("(?i)century|AD|th", "", kitty_clean.1$Date)
+kitty_clean.1$Date <- gsub(" to ", "-", kitty_clean.1$Date)
+
+#split dates
+kitty_clean.1$minimumChronometricAge <- sapply(strsplit(as.character(kitty_clean.1$Date),'-'), "[", 1)
+kitty_clean.1$maximumChronometricAge <- sapply(strsplit(as.character(kitty_clean.1$Date),'-'), "[", 2)
+
+kitty_clean.2 <- kitty_clean.1[,-8] #get rid of date
+
+colnames(kitty_clean.2)[colnames(kitty_clean.2)=="referenceSystem"] <- "minimumChronometricAgeReferenceSystem"
+kitty_clean.2$maximumChronometricAgeReferenceSystem <- kitty_clean.2$minimumChronometricAgeReferenceSystem
+
+colnames(kitty_clean.2)[colnames(kitty_clean.2)=="Age..modern.only."] <- "ageValue"
 
 ## VertNet data
 vertnet <- read.csv("mammals_no_bats_2019-03-13.csv", stringsAsFactors = FALSE)
