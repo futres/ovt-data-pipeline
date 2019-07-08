@@ -83,12 +83,13 @@ ray_clean <- ray_long_sub[!(is.na(ray_long_sub$value)),]
 colnames(ray_clean)[colnames(ray_clean)=="SPEC_ID"] <- "specimenID"
 colnames(ray_clean)[colnames(ray_clean)=="COUNTRY"] <- ""
 colnames(ray_clean)[colnames(ray_clean)=="LOCALITY"] <- "verbatimLocality"
-colnames(ray_clean)[colnames(ray_clean)=="QUARRY"] <- ""
+#colnames(ray_clean)[colnames(ray_clean)=="QUARRY"] <- ""
 colnames(ray_clean)[colnames(ray_clean)=="DATE.COLLECTED"] <- "verbatimEventDate"
 colnames(ray_clean)[colnames(ray_clean)=="SEX"] <- "sex"
-colnames(ray_clean)[colnames(ray_clean)=="AGE"] <- ""
+colnames(ray_clean)[colnames(ray_clean)=="AGE"] <- "ageValue"
 colnames(ray_clean)[colnames(ray_clean)=="variable"] <- "measurementType"
 colnames(ray_clean)[colnames(ray_clean)=="value"] <- "measurementValue"
+colnames(ray_clean)[colnames(ray_clean)=="SIDE"] <- "measurementSide"
 ray_clean$measurementUnit <- "mm"
 
 ##Kitty's data
