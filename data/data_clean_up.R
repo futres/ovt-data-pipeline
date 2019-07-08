@@ -103,7 +103,7 @@ ray_clean.2 <- ray_clean.1[!(is.na(ray_clean.1$measurementValue)),]
 
 ray_clean.2$specimenID <- gsub("^\\s+|\\s+$", "", ray_clean.2$specimenID)
 
-#write.csv(ray_clean.2, "ray_data.csv")
+#write.csv(ray_clean.2, "ray_data.csv", row.names=FALSE)
 
 ##Kitty's data
 kitty <- read.csv("https://de.cyverse.org/dl/d/0152B269-3942-4BC4-8FDC-E60B48B17EBD/MayaDeerMetrics_Cantryll_Emeryedits.csv", skip = 2, stringsAsFactors = FALSE)
@@ -200,7 +200,7 @@ kitty_clean.2$maximumChronometricAgeReferenceSystem <- kitty_clean.2$minimumChro
 
 colnames(kitty_clean.2)[colnames(kitty_clean.2)=="Age..modern.only."] <- "ageValue"
 
-#write.csv(kitty_clean.2, "kitty_data.csv")
+#write.csv(kitty_clean.2, "kitty_data.csv", row.names=FALSE)
 
 ## VertNet data
 vertnet <- read.csv("https://de.cyverse.org/dl/d/338C987D-F776-4439-910F-3AD2CD1D06E2/mammals_no_bats_2019-03-13.csv", stringsAsFactors = FALSE)
