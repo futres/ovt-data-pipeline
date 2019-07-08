@@ -172,6 +172,8 @@ kitty_clean.1$maximumChronometricAge <- sapply(strsplit(as.character(kitty_clean
 
 kitty_clean.2 <- kitty_clean.1[,-8] #get rid of date
 
+colnames(kitty_clean.2)[colnames(kitty_clean.2)=="referenceSystem"] <- "minimumChronometricAgeReferenceSystem"
+kitty_clean.2$maximumChronometricAgeReferenceSystem <- kitty_clean.2$minimumChronometricAgeReferenceSystem
 
 ## VertNet data
 vertnet <- read.csv("mammals_no_bats_2019-03-13.csv", stringsAsFactors = FALSE)
