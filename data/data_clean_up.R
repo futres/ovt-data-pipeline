@@ -134,7 +134,7 @@ colnames(kitty_clean)[colnames(kitty_clean)=="Site"] <- "sitename"
 colnames(kitty_clean)[colnames(kitty_clean)=="Provenience..field.number."] <- "contextName" #?
 colnames(kitty_clean)[colnames(kitty_clean)=="ID.Catalog...cat..element.or.portion."] <- "individualID"
 colnames(kitty_clean)[colnames(kitty_clean)=="Specimen.Catalog...cat..organism."] <- "catalogNumber"
-colnames(kitty_clean)[colnames(kitty_clean)=="Cantryll.Test...test..analyst.sample.number."] <- ""
+#colnames(kitty_clean)[colnames(kitty_clean)=="Cantryll.Test...test..analyst.sample.number."] <- ""
 colnames(kitty_clean)[colnames(kitty_clean)=="Period"] <- "culturalStratigraphyOccupationPeriod"
 #colnames(kitty_clean)[colnames(kitty_clean)=="Date"] <- ""
 colnames(kitty_clean)[colnames(kitty_clean)=="ID"] <- "scientificName"
@@ -165,8 +165,6 @@ kitty_clean.1$Date <- gsub("(?i)century|AD|th", "", kitty_clean.1$Date)
 kitty_clean.1$Date <- gsub(" to ", "-", kitty_clean.1$Date)
 
 #split dates
-separate(data = kitty_clean.1, col = kitty_clean.1$Date, into = c("minimumChronometricAge", "maximumChronometricAge"), sep = "\\-")
-
 kitty_clean.1$minimumChronometricAge <- sapply(strsplit(as.character(kitty_clean.1$Date),'-'), "[", 1)
 kitty_clean.1$maximumChronometricAge <- sapply(strsplit(as.character(kitty_clean.1$Date),'-'), "[", 2)
 
