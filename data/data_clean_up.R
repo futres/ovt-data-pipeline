@@ -81,7 +81,7 @@ for(i in 1:length(ray_long_sub$SPEC_ID)) {
 ray_clean <- ray_long_sub[!(is.na(ray_long_sub$value)),]
 
 colnames(ray_clean)[colnames(ray_clean)=="SPEC_ID"] <- "specimenID"
-colnames(ray_clean)[colnames(ray_clean)=="COUNTRY"] <- ""
+#colnames(ray_clean)[colnames(ray_clean)=="COUNTRY"] <- ""
 colnames(ray_clean)[colnames(ray_clean)=="LOCALITY"] <- "verbatimLocality"
 #colnames(ray_clean)[colnames(ray_clean)=="QUARRY"] <- ""
 colnames(ray_clean)[colnames(ray_clean)=="DATE.COLLECTED"] <- "verbatimEventDate"
@@ -91,6 +91,15 @@ colnames(ray_clean)[colnames(ray_clean)=="variable"] <- "measurementType"
 colnames(ray_clean)[colnames(ray_clean)=="value"] <- "measurementValue"
 colnames(ray_clean)[colnames(ray_clean)=="SIDE"] <- "measurementSide"
 ray_clean$measurementUnit <- "mm"
+
+#create species name
+ray_clean$scientificName <- paste(ray_clean$GENUS, ray_clean$SPECIES, sep = " ")
+
+#get rid of bone, genus, and species
+ray_clean.1 <- ray_clean[,c(-3,-4,-10)]
+
+#get rid of NAs
+ray_clean.2 <- ray_clean.1[!(is.na(ray_clean.1$measurementValue)),]
 
 ##Kitty's data
 kitty <- read.csv("MayaDeerMetrics_Cantryll_Emeryedits.csv", skip = 2, stringsAsFactors = FALSE)
