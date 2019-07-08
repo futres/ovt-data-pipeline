@@ -80,7 +80,16 @@ for(i in 1:length(ray_long_sub$SPEC_ID)) {
 
 ray_clean <- ray_long_sub[!(is.na(ray_long_sub$value)),]
 
-
+colnames(ray_clean)[colnames(ray_clean)=="SPEC_ID"] <- "specimenID"
+colnames(ray_clean)[colnames(ray_clean)=="COUNTRY"] <- ""
+colnames(ray_clean)[colnames(ray_clean)=="LOCALITY"] <- "verbatimLocality"
+colnames(ray_clean)[colnames(ray_clean)=="QUARRY"] <- ""
+colnames(ray_clean)[colnames(ray_clean)=="DATE.COLLECTED"] <- "verbatimEventDate"
+colnames(ray_clean)[colnames(ray_clean)=="SEX"] <- "sex"
+colnames(ray_clean)[colnames(ray_clean)=="AGE"] <- ""
+colnames(ray_clean)[colnames(ray_clean)=="variable"] <- "measurementType"
+colnames(ray_clean)[colnames(ray_clean)=="value"] <- "measurementValue"
+ray_clean$measurementUnit <- "mm"
 
 ##Kitty's data
 kitty <- read.csv("MayaDeerMetrics_Cantryll_Emeryedits.csv", skip = 2, stringsAsFactors = FALSE)
@@ -174,6 +183,8 @@ kitty_clean.2 <- kitty_clean.1[,-8] #get rid of date
 
 colnames(kitty_clean.2)[colnames(kitty_clean.2)=="referenceSystem"] <- "minimumChronometricAgeReferenceSystem"
 kitty_clean.2$maximumChronometricAgeReferenceSystem <- kitty_clean.2$minimumChronometricAgeReferenceSystem
+
+colnames(kitty_clean.2)[colnames(kitty_clean.2)=="Age..modern.only."] <- "ageValue"
 
 ## VertNet data
 vertnet <- read.csv("mammals_no_bats_2019-03-13.csv", stringsAsFactors = FALSE)
