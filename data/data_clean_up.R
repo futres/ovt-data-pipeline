@@ -101,6 +101,8 @@ kitty_sub2$template[kitty_sub2$variable == "Femur.GL"] <- "Femur length"
 kitty_sub2$template[kitty_sub2$variable == "Humerus.GLC"] <- "Humerus length from caput"
 kitty_sub2$template[kitty_sub2$variable == "Humerus.GL"] <- "Humerus length"
 
+kitty_clean <- kitty_sub2[!(is.na(kitty_sub2$value)),]
+
 ## VertNet data
 vertnet <- read.csv("mammals_no_bats_2019-03-13.csv", stringsAsFactors = FALSE)
 
