@@ -80,6 +80,8 @@ for(i in 1:length(ray_long_sub$SPEC_ID)) {
 
 ray_clean <- ray_long_sub[!(is.na(ray_long_sub$value)),]
 
+
+
 ##Kitty's data
 kitty <- read.csv("MayaDeerMetrics_Cantryll_Emeryedits.csv", skip = 2, stringsAsFactors = FALSE)
 
