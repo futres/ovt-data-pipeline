@@ -105,6 +105,23 @@ kitty_sub2$template[kitty_sub2$variable == "Humerus.GL"] <- "Humerus length"
 
 kitty_clean <- kitty_sub2[!(is.na(kitty_sub2$value)),]
 
+#move modern to a different group
+for(i in 1:length(kitty_clean$Period)){
+  if(isTRUE(kitty_clean$Period[i] == "M" | kitty_clean$Period[i] == "F"))
+    kitty_clean$Period[i] <- "NA"
+    kitty_clean$verbatimEventDate[i] <- kitty_clean$Date[i]
+}
+
+for(i in 1:length(kitty_clean$Period)){
+  if(isTRUE(kitty_clean$Date[i] == kitty_clean$verbatimEventDate[i]))
+    kitty_clean$Date[i] <- "NA"
+}
+
+#merge
+x <- rbind(kitty_clean.1.1, kitty_clean.2)
+
+#rename columns
+
 ## VertNet data
 vertnet <- read.csv("mammals_no_bats_2019-03-13.csv", stringsAsFactors = FALSE)
 
