@@ -9,7 +9,7 @@ This directory contains files that need to be edited only once for the entire re
 
 **mapping.csv:** Maps column headers of ingested data files to data property IRIs and specify data property domains.
 
-**reasoner.conf:** Used to configure reasoning and building preference for Ontopilot.
+**reasoner.conf:** Used to configure reasoning and building preferences for Ontopilot.
 
 **relations.csv:** Reiterates the relations among the classes specified in entity.csv, based on relations from FOVT.
 
