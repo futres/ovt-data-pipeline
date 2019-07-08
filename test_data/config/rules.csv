@@ -1,0 +1,3 @@
+rule,columns,level,list
+Float,decimalLatitude|decimalLongitude,error,
+ControlledVocabulary,anatomicalFeature,error,anatomical_features.csv

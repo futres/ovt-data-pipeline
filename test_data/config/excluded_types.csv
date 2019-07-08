@@ -1,0 +1,6 @@
+ID,Exclude class,Exclude superclasses
+http://purl.obolibrary.org/obo/OVT_0000001,N,Y
+'vertebrate morphological trait',N,Y
+'Vertebrata <Metazoa>',N,Y
+'measurement datum',N,Y
+'specifically dependent continuant',Y,Y

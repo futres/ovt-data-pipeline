@@ -1,0 +1,23 @@
+column,uri,entity_alias,notes
+observationID,http://rs.tdwg.org/dwc/terms/eventID,organismalTraitObsProcess,
+elementID,http://rs.tdwg.org/dwc/terms/measurementID,organismalTraitObsProcess,
+organismID,http://rs.tdwg.org/dwc/terms/organismID,vertebrateOrganism,We hope that each organism has a unique occurence ID
+beginDateCertainty,urn:beginDateCertainty,organismalTraitObsProcess,
+endDateCertainty,urn:endDateCertainty,organismalTraitObsProcess,
+methodOfDateDerivation,urn:methodOfDateDerivation,organismalTraitObsProcess,
+yearMeasured,http://rs.tdwg.org/dwc/terms/year,organismalTraitObsProcess,
+monthMeasured,http://rs.tdwg.org/dwc/terms/month,organismalTraitObsProcess,
+dayMeasured,http://rs.tdwg.org/dwc/terms/day,organismalTraitObsProcess,
+decimalLatitude,http://rs.tdwg.org/dwc/terms/decimalLatitude,organismalTraitObsProcess,
+decimalLongitude,http://rs.tdwg.org/dwc/terms/decimalLongitude,organismalTraitObsProcess,
+imageURI,http://rs.tdwg.org/dwc/terms/associatedMedia,organismalTraitObsProcess,
+scientificName,http://rs.tdwg.org/dwc/terms/scientificName,vertebrateOrganism,
+taxonRank,http://rs.tdwg.org/dwc/terms/taxonRank,vertebrateOrganism,
+minimumChronometricAge,urn:minimumChronometricAge,vertebrateOrganism,
+maximumChronometricAge,urn:maximumChronometricAge,vertebrateOrganism,
+associatedSequences,http://rs.tdwg.org/dwc/terms/associatedSequences,vertebrateOrganism,
+measurementValue,http://rs.tdwg.org/dwc/terms/measurementValue,scalarMeasurementDatum,
+measurementUnit,http://rs.tdwg.org/dwc/terms/measurementUnit,scalarMeasurementDatum,
+measurementMethod,http://rs.tdwg.org/dwc/terms/measurementMethod,scalarMeasurementDatum,
+anatomicalFeature,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,vertebrateScalarTrait,"Using rdf:type indicates the values will be object properties, in this case defined by a list association in rules.csv."
+anatomicalFeature,urn:anatomicalFeature,vertebrateScalarTrait,
