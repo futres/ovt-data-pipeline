@@ -101,6 +101,8 @@ ray_clean.1 <- ray_clean[,c(-3,-4,-10)]
 #get rid of NAs
 ray_clean.2 <- ray_clean.1[!(is.na(ray_clean.1$measurementValue)),]
 
+#write.csv(ray_clean.2, "ray_data.csv")
+
 ##Kitty's data
 kitty <- read.csv("https://de.cyverse.org/dl/d/0152B269-3942-4BC4-8FDC-E60B48B17EBD/MayaDeerMetrics_Cantryll_Emeryedits.csv", skip = 2, stringsAsFactors = FALSE)
 
@@ -196,8 +198,10 @@ kitty_clean.2$maximumChronometricAgeReferenceSystem <- kitty_clean.2$minimumChro
 
 colnames(kitty_clean.2)[colnames(kitty_clean.2)=="Age..modern.only."] <- "ageValue"
 
+#write.csv(kitty_clean.2, "kitty_data.csv")
+
 ## VertNet data
-vertnet <- read.csv("mammals_no_bats_2019-03-13.csv", stringsAsFactors = FALSE)
+vertnet <- read.csv("https://de.cyverse.org/dl/d/338C987D-F776-4439-910F-3AD2CD1D06E2/mammals_no_bats_2019-03-13.csv", stringsAsFactors = FALSE)
 
 #rearrange columns
 #need to put catalognumber [18], lat [20], long[21], collection code [19], institution code [59], scientific name [71], locality [63], occurrence id [65]
