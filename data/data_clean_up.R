@@ -81,9 +81,9 @@ for(i in 1:length(ray_long_sub$SPEC_ID)) {
 ray_clean <- ray_long_sub[!(is.na(ray_long_sub$value)),]
 
 colnames(ray_clean)[colnames(ray_clean)=="SPEC_ID"] <- "specimenID"
-#colnames(ray_clean)[colnames(ray_clean)=="COUNTRY"] <- ""
+colnames(ray_clean)[colnames(ray_clean)=="COUNTRY"] <- "country"
 colnames(ray_clean)[colnames(ray_clean)=="LOCALITY"] <- "verbatimLocality"
-#colnames(ray_clean)[colnames(ray_clean)=="QUARRY"] <- ""
+colnames(ray_clean)[colnames(ray_clean)=="QUARRY"] <- "eventRemarks"
 colnames(ray_clean)[colnames(ray_clean)=="DATE.COLLECTED"] <- "verbatimEventDate"
 colnames(ray_clean)[colnames(ray_clean)=="SEX"] <- "sex"
 colnames(ray_clean)[colnames(ray_clean)=="AGE"] <- "ageValue"
@@ -96,10 +96,12 @@ ray_clean$measurementUnit <- "mm"
 ray_clean$scientificName <- paste(ray_clean$GENUS, ray_clean$SPECIES, sep = " ")
 
 #get rid of bone, genus, and species
-ray_clean.1 <- ray_clean[,c(-3,-4,-10)]
+ray_clean.1 <- ray_clean[,c(-2,-3,-4,-10)]
 
 #get rid of NAs
 ray_clean.2 <- ray_clean.1[!(is.na(ray_clean.1$measurementValue)),]
+
+ray_clean.2$specimenID <- gsub("^\\s+|\\s+$", "", ray_clean.2$specimenID)
 
 #write.csv(ray_clean.2, "ray_data.csv")
 
@@ -209,20 +211,24 @@ df <- vertnet[,c(18:21,43,59,62:68,71,72,1:17,22:42,44:58,60:61,69:70,73:119)]
 
 #select out "focused traits"
 #https://docs.google.com/spreadsheets/d/1rU15rBo-JpopEqpxBXLWSqaecBXwtYpxBLjRImcCvDQ/edit#gid=0
-#unneeded traits: testes
+#unneeded traits: testes [90:105]
 
+vertnet.2 <- df[,-(90:105)]
 
-needs <- df[,1:10]
+#needs <- vertnet.2[,1:15]
+#cols <- colnames(vertnet.2)
+#Vpattern <- "hind_foot_length|ear_length|body_mass|lifestage|tail_length|total_length"
+#Vx <- grep(Vpattern, cols, value = TRUE)
 
-cols <- colnames(vertnet)
-Vpattern <- "hind_foot_length|ear_length|body_mass|lifestage|tail_length|total_length"
-Vx <- grep(Vpattern, cols, value = TRUE)
+#vertnet_sub <- vertnet.2[,vertnet.2 %in% Vx] #error: memory exhausted
+#vertnet_sub2 <- cbind(needs, vertnet_sub)
 
-vertnet_sub <- vertnet[,vertnet %in% Vx]
+#get rid of empty data
+vertnet.3 <- vertnet.2[!is.na(vertnet.2$X1st_body_mass & vertnet.2$X1st_ear_length & 
+                                vertnet.2$X1st_hind_foot_length)]
 
-#create long version (1:10 are keepers)
-vertnet_long <- melt(df, id.vars = 1:10)
-
+#create long version
+vertnet_long <- melt(vertnet.2, id.vars = 1:15) #memory exhausted
 
 
 ##NEXT: select out specific measurements / change measurement names and map to template
