@@ -205,10 +205,13 @@ vertnet <- read.csv("https://de.cyverse.org/dl/d/338C987D-F776-4439-910F-3AD2CD1
 
 #rearrange columns
 #need to put catalognumber [18], lat [20], long[21], collection code [19], institution code [59], scientific name [71], locality [63], occurrence id [65]
-df <- vertnet[,c(18:21,43,59,63,66,67,71,1:17,22:42,44:58,60:62,64,65,68:70,72:119)]
+df <- vertnet[,c(18:21,43,59,62:68,71,72,1:17,22:42,44:58,60:61,69:70,73:119)]
 
 #select out "focused traits"
 #https://docs.google.com/spreadsheets/d/1rU15rBo-JpopEqpxBXLWSqaecBXwtYpxBLjRImcCvDQ/edit#gid=0
+#unneeded traits: testes
+
+
 needs <- df[,1:10]
 
 cols <- colnames(vertnet)
