@@ -15,7 +15,7 @@ docker pull jdeck88/ontology-data-pipeline
 docker run -v "$(pwd)":/process -w=/app -ti jdeck88/ontology-data-pipeline \
     python pipeline.py \
     -v --drop_invalid \
-    --data_file $INPUT_DATAFILE \
-    $OUTPUT_DIRECTORY \
+    --data_file /process/$INPUT_DATAFILE \
+    /process/$OUTPUT_DIRECTORY \
     https://raw.githubusercontent.com/futres/fovt/master/ontology/fovt-merged-reasoned.owl \
-    config \
+    /process/config \

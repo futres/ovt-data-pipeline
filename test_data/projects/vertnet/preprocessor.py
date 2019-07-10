@@ -25,8 +25,8 @@ class PreProcessor(AbstractPreProcessor):
     def _transform_data(self, data):
         # Apply a unique UUID for every observation and element.  In Vertnet data, we don't track
         # observations or elements so these are just UUIDs in both cases.
-        data['observationID'] = data.apply(lambda x: uuid.uuid4(), axis=1)
-        data['elementID'] = data.apply(lambda x: uuid.uuid4(), axis=1)
+        #data['observationID'] = data.apply(lambda x: uuid.uuid4(), axis=1)
+        #data['elementID'] = data.apply(lambda x: uuid.uuid4(), axis=1)
         # fill in empty attributes that are in in self.headers -- we need to have all column names mapped in output
         data['imageURI'] = ''
         data['minimumChronometricAge'] = ''
