@@ -1,5 +1,6 @@
 .python-version
 **/output/*
+**/data/*
 **/__pycache__/*
 .cache/*
 output.txt
