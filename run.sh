@@ -3,7 +3,7 @@ OUTPUT_DIRECTORY=$2
 
 if [[ -z $INPUT_DATAFILE ]] || [[ -z $OUTPUT_DIRECTORY ]]
    then
-     echo "Usage: run.sh {DATAFILE} {OUTPUT_DIRECTORY}"
+     echo "Usage: run.sh {INPUT_DATAFILE} {OUTPUT_DIRECTORY}"
      echo ""
      echo "This bash script runs the pipeline for any INPUT_DATAFILE and places output in the specified OUTPUT_DIRECTORY." 
      exit 0
