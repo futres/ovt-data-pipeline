@@ -22,6 +22,13 @@ Once you have verified things work using the test procedure above, you can then 
 ```
 ./run.sh {INPUT_DATAFILE} {OUTPUT_DIRECTORY}
 ```
+
+An example of running the above command would look like:
+```
+./run.sh data/ray/ray_data_full.csv data/ray/output
+```
+This looks for a data file called "ray_data_full.csv" and writes output to data/ray/output
+
 This repository contains all of the configuration files needed to process data.  If you want to modify configuration settings, 
 refer to [ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline) for instructions.
 
