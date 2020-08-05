@@ -15,22 +15,14 @@ def test_end_to_end(project):
     global Message
     #base_dir = os.path.dirname(__file__)
 
-    # set the project, always preceeded with test_
-    project_name = project
-    # set the project base dir
-    project_base_dir = os.path.join('projects') 
-    # set the project base, based on project name
-    project_base = '.projects.'+project_name #python name reference for dynamic class loading
-    # set the project output path
-    project_path = os.path.join(project_base_dir)
     # output directory
-    output_path = os.path.join('test_data',project_name,'output')
+    output_path = os.path.join('test_data','vertnet','output')
     # input directory
-    input_path = os.path.join('test_data',project_name,'input')
+    input_path = os.path.join('test_data','vertnet','input','vertnet_input.csv')
     # path pointing to onfiguration files. we do not use the main project configuration directory 
     # for the application itself as that may contain changes we don't wish to test.
     # to test changes in configuration files the relevant config files should be copied here
-    config_path = os.path.join('config')
+    config_path = os.path.join('test_data','config')
     # reference to ontology. Do NOT change this as it will interfere with rest results. it is Okay if ontology is
     # out of date.  Here we reference a specific release of the ontology itself so it should be static
     ontology_url = 'https://raw.githubusercontent.com/futres/ovt/master/ontology/ovt-merged-reasoned.owl'
@@ -45,7 +37,7 @@ def test_end_to_end(project):
     # The ontology is hard-coded here so tests can pass even if ontology is changed.
     # The presence here of an up to data ontology is not necessary since we're just 
     # performing tests on pipeline functionality
-    cmd = ['python', '../ontology-data-pipeline/process.py', project_name, input_path, output_path, ontology_url, config_path,project_path]
+    cmd = ['python', '../ontology-data-pipeline/process.py',  input_path, output_path, ontology_url, config_path]
 
     # setup process to execute given command
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
