@@ -7,11 +7,14 @@ This repository contains the configuration directives to run the
 
 # Getting Started
 [Install docker](https://docs.docker.com/install/) and then clone this repository.  Once that is done, you can enter the following:
+
 ```
-./run_test.sh 
+./sample_runner.sh 
 ```
+
 The above script first checks for the latest docker image.  This may take awhile to install the ontology-data-pipeline image on the first run.
 After the test runs, you should see output that ends with:
+
 ```
 ...
 INFO:root:b'    writing /process/test_data/vertnet/output/output_reasoned_csv/data_1.ttl.csv\n'

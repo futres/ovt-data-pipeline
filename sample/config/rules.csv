@@ -1,0 +1,2 @@
+rule,columns,level,list
+RequiredValue,materialSampleID|measurementType,error,
