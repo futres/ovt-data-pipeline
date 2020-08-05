@@ -15,7 +15,7 @@ fi
 
 python ../ontology-data-pipeline/pipeline.py \
 -v --drop_invalid \
---data_file $INPUT_DATAFILE \
+$INPUT_DATAFILE \
 $OUTPUT_DIRECTORY \
-https://raw.githubusercontent.com/futres/fovt/master/ontology/fovt-merged-reasoned.owl \
+file:///Users/jdeck/IdeaProjects/fovt/ontology/fovt-merged-reasoned.owl \
 config \
