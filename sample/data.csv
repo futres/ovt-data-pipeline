@@ -1,2 +1,2 @@
-materialSampleID,organismID,scientificName,taxonRank,measurementType,measurementType,measurementUnit,measurementMethod,yearMeasured,monthMeasured,dayMeasured,decimalLatitude,decimalLongitude,beginDateCertainty,methodOfDateDerivation
-1,http://arctos.database.museum/guid/MVZ:Herp:245699?seid=1329744,Sceloporus occidentalis,specificEpithet,{full body length},84.6,mm,Unknown,2004,6,24,37.84105,-119.49166,6/24/04,Unknown
+materialSampleID,scientificName,taxonRank,measurementType,measurementType,measurementUnit,measurementMethod,yearMeasured,monthMeasured,dayMeasured,decimalLatitude,decimalLongitude,beginDateCertainty,methodOfDateDerivation,organismID
+1,Sceloporus occidentalis,specificEpithet,{full body length},84.6,mm,Unknown,2004,6,24,37.84105,-119.49166,6/24/04,Unknown,http://arctos.database.museum/guid/MVZ:Herp:245699?seid=1329744
