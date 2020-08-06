@@ -1,4 +1,2 @@
-observationID,materialSampleID,individualID,institutionCode,collectionCode,catalogNumber,decimalLatitude,decimalLongitude,country,verbatimLocality,sitename,verbatimEventDate,sex,measurementSide,ageValue,variable,measurementValue,measurementType,measurementUnit,scientificName
-1,OU1144/1,OU1144/1,,,,,,3,1,,,unknown,right,7,M2,399.28,{length line of medial condyle of femur to greater trochanter},mm,Hippotherium giganteum
-2,HLMDSS-2,HLMDSS-2,,,,,,5,1,,,unknown,no record,8,M2,188,{length line trochlea of humerus to caput of humerus},mm,"Hipparion  sp."
-3,Ho1154,Ho1154,,,,,,7,1,,,unknown,left,10.3,M2,0,{length line of medial condyle of femur to greater trochanter},mm,Hippotherium primigeneium
+materialSampleID,organismID,scientificName,taxonRank,measurementType,measurementType,measurementUnit,measurementMethod,yearMeasured,monthMeasured,dayMeasured,decimalLatitude,decimalLongitude,beginDateCertainty,methodOfDateDerivation
+1,http://arctos.database.museum/guid/MVZ:Herp:245699?seid=1329744,Sceloporus occidentalis,specificEpithet,{full body length},84.6,mm,Unknown,2004,6,24,37.84105,-119.49166,6/24/04,Unknown
