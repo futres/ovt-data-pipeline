@@ -1,7 +1,8 @@
 INPUT_DATAFILE=$1
 OUTPUT_DIRECTORY=$2
+ONTOLOGY=https://raw.githubusercontent.com/futres/fovt/master/fovt-full.owl
 
-if [[ -z $INPUT_DATAFILE ]] || [[ -z $OUTPUT_DIRECTORY ]]
+if [[ -z $INPUT_DATAFILE ]] || [[ -z $OUTPUT_DIRECTORY ]] 
    then
      echo "Usage: run.sh {INPUT_DATAFILE} {OUTPUT_DIRECTORY}"
      echo ""
@@ -17,5 +18,5 @@ docker run -v "$(pwd)":/process -w=/app -ti jdeck88/ontology-data-pipeline \
     -v --drop_invalid \
     /process/$INPUT_DATAFILE \
     /process/$OUTPUT_DIRECTORY \
-    https://raw.githubusercontent.com/futres/fovt/master/ontology/fovt-merged-reasoned.owl \
+    $ONTOLOGY \
     /process/config \

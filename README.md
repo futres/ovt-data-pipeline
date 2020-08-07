@@ -21,7 +21,14 @@ INFO:root:b'    writing /process/test_data/vertnet/output/output_reasoned_csv/da
 INFO:root:reasoned_csv output at test_data/vertnet/output/output_reasoned_csv/data_1.ttl.csv
 ```
 
-Once you have verified things work using the test procedure above, you can then run data through the pipeline using:
+You can also try running the sample script using python directly.  To do this, checkout ontology-data-pipeline and place
+at ```../ontology-data-pipeline``` and the run like:
+
+```
+./sample_runner_py.sh
+```
+
+Once you have verified things work using test script, you can then run data through the pipeline using:
 ```
 ./run.sh {INPUT_DATAFILE} {OUTPUT_DIRECTORY}
 ```
