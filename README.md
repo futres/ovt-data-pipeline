@@ -17,19 +17,17 @@ It uses the provided `sample_data_processed.csv` file and a sample ontology:
 ...
 INFO:root:reasoned_csv output at data/output/output_reasoned_csv/data_1.ttl.csv
 ```
-```
 
 The above script calls `run.sh` which executes a docker pull (to check for latest image), and then
 runs the script in the local environment.  You can view the contents of run.sh using `more run.sh` to get an
 idea of how to structure your own script if you choose.
 
 # Running with Python instead of Docker
-You can also try running the sample script using python directly.  To do this, checkout ontology-data-pipeline and place
-at ```../ontology-data-pipeline``` and the run like:
+You can also try running the sample script using python directly.  To do this, checkout[ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline)  and place at ```../ontology-data-pipeline``` and the run like:
 
 ```
-# a sample_runner script running python directly, 
-# assuming that you have ontology-data-pipeline checkout
+# a sample_runner script running python directly assuming that you have ontology-data-pipeline checked out
+# in the proper location
     python ../ontology-data-pipeline/process.py \
     -v --drop_invalid \
     sample_data_processed.csv \
@@ -38,10 +36,9 @@ at ```../ontology-data-pipeline``` and the run like:
     config \
 ```
 
+# Working with the repository
 Once you have verified things work using the sample script script, you can then run data through the pipeline from 
-the command line using the tools mentioned above and using your own input datasources.  We have provided an empty data directory as part of this 
-distribution to store data, but you may direct output anywhere you choose.
-
+the command line using the tools mentioned above and using your own input datasources.  We have provided an empty data directory as part of this  distribution to store data, but you may direct output anywhere you choose.
 
 If you want to modify configuration settings, refer to [ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline) for instructions.
 
