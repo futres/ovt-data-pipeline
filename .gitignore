@@ -1,7 +1,12 @@
 .python-version
-**/data/*
+data/*
+!data/readme.md
+!data/output
+data/output/*
+!data/output/readme.md
 **/__pycache__/*
 .cache/*
 log.txt
 output.txt
 output.txt.err
+.DS_Store

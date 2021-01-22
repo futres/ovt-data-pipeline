@@ -1,2 +1,0 @@
-observationID,materialSampleID,decimalLatitude,decimalLongitude,scientificName,country,measurementValue,measurementUnit,traits
-,1,37.84105,-119.49166,Sceloporus occidentalis,,,mm,obo:PATO_0000117|https://raw.githubusercontent.com/futres/fovt/master/src/fovt-base.owl/FOVT_0000044|obo:PATO_0000122|obo:PATO_0000051|obo:OBA_VT0010454|obo:PATO_0001708|obo:PATO_0001241|obo:OBA_VT0100005|obo:OBA_0100003|obo:OBA_VT0001256|obo:OBA_0000015

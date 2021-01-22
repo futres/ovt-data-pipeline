@@ -1,6 +1,3 @@
-This directory contains files that need to be edited only once for the entire repository. Other edits are done within the projects directories.
-
-
 **entity.csv:** Specifies the ontology classes for which instances will bemade. Whenever there is a unique value for the property specified by "unique key", a new instance will be created.
 
 **excluded_types.csv:**  Specifies the ontology classes for which instances will NOT be created. You can choose to exlude a class or its ancestors or both. This prevents the creations of a bunch of unneeded instances for root level classes on which no one is likely to query.

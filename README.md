@@ -6,15 +6,30 @@ This repository contains the configuration directives to run the
 
 
 # Getting Started
-[Install docker](https://docs.docker.com/install/) and then clone this repository.  Once that is done, you can enter the following:
+[Install docker](https://docs.docker.com/install/) and then clone this repository.  Once that is done, you can test
+the environment by using the following script, which demonstrates calling docker and running the necessary commands.
+It uses the provided `sample_data_processed.csv` file and a sample ontology:
 
 ```
-./sample_runner.sh 
-```
+# This is a script to demonstrate a working version of the pipeline
+# The ontology and the data is referenced here just for purposes of illustration
 
-The above script first checks for the latest docker image.  This may take awhile to install the ontology-data-pipeline image on the first run.
+# Note that in the command usage below, the current working ($pwd) is aliased
+# to /process so a reference to the directory of /process/sample really points
+# to the sample directory in this repository
+
+# check that we have the latest ... this may take awhile the first time through
+docker pull jdeck88/ontology-data-pipeline
+
+docker run -v "$(pwd)":/process -w=/app -ti jdeck88/ontology-data-pipeline \
+    python pipeline.py \
+    -v --drop_invalid \
+    /process/sample_data_processed.csv \
+    /process/data/output \
+    https://raw.githubusercontent.com/futres/fovt/597a56be6f481de2c0320db023f0ac0543724880/ontology/fovt-merged-reasoned.owl \
+    /process/config \
+```
 After the test runs, you should see output that ends with:
-
 ```
 ...
 INFO:root:b'    writing /process/test_data/vertnet/output/output_reasoned_csv/data_1.ttl.csv\n'
@@ -25,22 +40,22 @@ You can also try running the sample script using python directly.  To do this, c
 at ```../ontology-data-pipeline``` and the run like:
 
 ```
-./sample_runner_py.sh
+# a sample_runner script running python directly, 
+# assuming that you have ontology-data-pipeline checkout
+    python ../ontology-data-pipeline/process.py \
+    -v --drop_invalid \
+    sample_data_processed.csv \
+    data/output \
+    https://raw.githubusercontent.com/futres/fovt/597a56be6f481de2c0320db023f0ac0543724880/ontology/fovt-merged-reasoned.owl \
+    config \
 ```
 
-Once you have verified things work using test script, you can then run data through the pipeline using:
-```
-./run.sh {INPUT_DATAFILE} {OUTPUT_DIRECTORY}
-```
+Once you have verified things work using the sample script script, you can then run data through the pipeline from 
+the command line using the run.sh script yourself.  We have provided an empty data directory as part of this 
+distribution to store data, but you may direct output anywhere you choose.
 
-An example of running the above command would look like:
-```
-./run.sh data/ray/ray_data_full.csv data/ray/output
-```
-This looks for a data file called "ray_data_full.csv" and writes output to data/ray/output
 
-This repository contains all of the configuration files needed to process data.  If you want to modify configuration settings, 
-refer to [ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline) for instructions.
+If you want to modify configuration settings, refer to [ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline) for instructions.
 
 
 

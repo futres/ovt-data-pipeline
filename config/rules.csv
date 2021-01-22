@@ -1,2 +1,3 @@
 rule,columns,level,list
-RequiredValue,materialSampleID|measurementType,error,
+RequiredValue,observationID|materialSampleID|measurementType,error,
+UniqueValue,observationID,error
