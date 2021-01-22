@@ -17,6 +17,8 @@ It uses the provided `sample_data_processed.csv` file and a sample ontology:
 ...
 INFO:root:reasoned_csv output at data/output/output_reasoned_csv/data_1.ttl.csv
 ```
+*NOTE:* you must reference your input data file to reason within the root-level of this repository. Preferably under the `data/` directory.
+The docker image cannot files like `../some-other-directory/file.txt`.  The
 
 The above script calls `run.sh` which executes a docker pull (to check for latest image), and then
 runs the script in the local environment.  You can view the contents of run.sh using `more run.sh` to get an
