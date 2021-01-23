@@ -31,14 +31,14 @@ class JSONSerializerPython2(serializer.JSONSerializer):
 
 
 class ESLoader(object):
-    def __init__(self, file_name, index_name, drop_existing=False, alias=None, host='localhost:9200'):
+    def __init__(self, data_dir, index_name, drop_existing=False, alias=None, host='localhost:9200'):
         """
-        :param file_name
+        :param data_dir
         :param index_name: the es index to upload to
         :param drop_existing:
         :param alias: the es alias to associate the index with
         """
-        self.file_name = file_name
+        self.data_dir = data_dir
         self.index_name = index_name
         self.drop_existing = drop_existing
         self.alias = alias
@@ -54,7 +54,7 @@ class ESLoader(object):
             print ('creating index ' + self.index_name)
             self.__create_index()
         
-        print('indexing ' + self.file_name)
+        print('indexing ' + self.data_dir)
         
         doc_count = 0
 
@@ -80,7 +80,7 @@ class ESLoader(object):
                 row['traits'] = row['traits'].split("|")
                 
                 # remove hashes from measurementType
-                row['measurementType'] = data['measurementType'].map(lambda x: x.lstrip('{').rstrip('}'))
+                row['measurementType'] = row['measurementType'].replace('{', '').replace('}','')
 
                 # gracefully handle empty locations
                 if (row['decimalLatitude'] == '' or row['decimalLongitude'] == ''): 
@@ -131,10 +131,10 @@ index = 'futres'
 drop_existing = True
 alias = 'futres'
 host =  'tarly.cyverse.org:80'
-file_name = 'data/futres_data_processed.csv'
+data_dir = 'data/output/output_reasoned_csv/'
 #file_name = 'loadertest.csv'
 
-loader = ESLoader(file_name, index, drop_existing, alias, host)
+loader = ESLoader(data_dir, index, drop_existing, alias, host)
 loader.load()
 
 
