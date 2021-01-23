@@ -25,7 +25,11 @@ runs the script in the local environment.  You can view the contents of run.sh u
 idea of how to structure your own script if you choose.
 
 # Running with Python instead of Docker
-You can also try running the sample script using python directly.  To do this, checkout[ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline)  and place at ```../ontology-data-pipeline``` and the run like:
+You can also try running the sample script using python directly.  To do this:
+
+  * checkout[ontology-data-pipeline](https://github.com/biocodellc/ontology-data-pipeline)  and place at `../ontology-data-pipeline` and the run like:
+  * create a symbolic link in root directory of fovt-data-pipeline like `ln -s ../ontology-data-pipeline ontopilot` (this is required for referencing in the reasoner step)
+
 
 ```
 # a sample_runner script running python directly assuming that you have ontology-data-pipeline checked out
