@@ -41,7 +41,7 @@ WHERE {
 	OPTIONAL {?vertTraitObsProc dwc:country ?country} .
 	OPTIONAL {?vertTraitObsProc dwc:locality ?locality} .
 	OPTIONAL {?vertTraitObsProc dwc:samplingProtocol ?samplingProtocol} .
-	OPTIONAL {?vertTraitObsProc dwc:yearCollected ?yearCollected} .
+	OPTIONAL {?vertTraitObsProc dwc:year ?yearCollected} .
 
 	# Organism Attributes
     OPTIONAL {?vertOrg dwc:scientificName ?scientificName} . 
