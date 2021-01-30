@@ -10,3 +10,5 @@ log.txt
 output.txt
 output.txt.err
 .DS_Store
+db.ini
+vertnet/
