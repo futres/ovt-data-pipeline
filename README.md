@@ -16,6 +16,11 @@ pyenv virtualenv 3.7.2 futres-api
 pyenv local futres-api
 ```
 
+## Fetching vertnet data
+Vertnet data extracts live in a directory called `vertnet` immediately off of the root directory of this repository.
+This directory is ignored in the .gitignore file.  The [getDiscoveryEnvironmentData.md](getDiscoveryEnvironmentData.md) has
+information on updating the vertnet dataset.
+
 ## Running the Script
 The fetch.py script gets data from GEOME and looks in the vertnet directory for
 processed Vertnet scripts and populates JSON files in the data directory as well

@@ -25,10 +25,6 @@ iget -PT /iplant/home/rwalls/FuTRES_data/ValidatedData/FuTRES_Mammals_VertNet_Gl
 iget -PT /iplant/home/rwalls/FuTRES_data/ValidatedData/FuTRES_Mammals_VertNet_Global_Modern_4.csv .
 iget -PT /iplant/home/rwalls/FuTRES_data/ValidatedData/FuTRES_Mammals_VertNet_Global_Modern_5.csv .
 iget -PT /iplant/home/rwalls/FuTRES_data/ValidatedData/FuTRES_Mammals_VertNet_Global_Modern_6.csv .
-iget -PT /iplant/home/rwalls/FuTRES_data/ValidatedData/FuTRES_Mammals_VertNet_Global_Modern_7.csv .
-iget -PT /iplant/home/rwalls/FuTRES_data/ValidatedData/FuTRES_Mammals_VertNet_Global_Modern_8.csv .
-iget -PT /iplant/home/rwalls/FuTRES_data/ValidatedData/FuTRES_Mammals_VertNet_Global_Modern_9.csv .
-iget -PT /iplant/home/rwalls/FuTRES_data/ValidatedData/FuTRES_Mammals_VertNet_Global_Modern_10.csv .
 
 ```
 
