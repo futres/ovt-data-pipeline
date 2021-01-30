@@ -1,6 +1,6 @@
 .python-version
-data/*
-!data/readme.md
+data/futres_data_processed.csv
+data/*.xlsx
 !data/output
 data/output/*
 !data/output/readme.md

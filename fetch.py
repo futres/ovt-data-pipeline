@@ -378,7 +378,7 @@ def project_table_builder():
 
 def read_processed_data():
     print("reading processed data ...")
-    return pd.read_csv(processed_csv_filename_zipped)
+    return pd.read_csv(processed_csv_filename)
     
 def group_data(df):      
     print("grouping results ...")    
