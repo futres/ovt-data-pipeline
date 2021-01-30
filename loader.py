@@ -3,6 +3,7 @@ import csv
 import datetime
 import json
 import os
+import urllib.request
 
 
 import elasticsearch.helpers
@@ -44,6 +45,12 @@ class ESLoader(object):
         self.alias = alias
         self.es = Elasticsearch([host], serializer=JSONSerializerPython2())
 
+        # Create lookup file for mapping uris to labels
+        self.lookup = dict()
+        with urllib.request.urlopen("https://plantphenology.org//futresapi/v2/fovt/") as url:
+            data = json.loads(url.read().decode())
+            for trait in data:
+                self.lookup[trait['termID']] = trait['label']
     def load(self):
         if not self.es.indices.exists(self.index_name):
             print ('creating index ' + self.index_name)
@@ -78,7 +85,17 @@ class ESLoader(object):
             for row in reader:
                 # split delimited traits into an array so es_loader handles it properly
                 row['traits'] = row['traits'].split("|")
-                
+
+                # mapped traits are just those traits we care about listing for the interface
+                # and mapped to rdfs:label using lookup table
+                mapped_traits = []
+                for trait in row['traits']:
+                    try:
+                        mapped_traits.append(self.lookup[trait])
+                    except:
+                        pass
+                row['mapped_traits'] = mapped_traits
+
                 # remove hashes from measurementType
                 row['measurementType'] = row['measurementType'].replace('{', '').replace('}','')
 
@@ -106,6 +123,11 @@ class ESLoader(object):
             "mappings": {
                 TYPE: {
                     "properties": {
+                        "traits": {"type": "keyword"},
+                        "mapped_traits": {"type": "keyword"},
+                        "lifeStage": {"type": "keyword"},
+                        "genus": {"type": "keyword"},
+                        "projectID": {"type": "keyword"},
                         "measurementType": {"type": "text"},
                         "measurementValue": {"type": "float"},
                         "decimalLatitude": { "type": "float" },
